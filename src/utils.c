@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:16:38 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/13 16:20:51 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:03:30 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ long	ft_atol(const char *str)
 		str++;
 	}
 	return (nb * minus);
+}
+
+void	double_free(char	**str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free (str);
 }

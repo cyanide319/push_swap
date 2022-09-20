@@ -6,17 +6,17 @@
 #    By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 16:06:16 by tbeaudoi          #+#    #+#              #
-#    Updated: 2022/09/13 16:29:53 by tbeaudoi         ###   ########.fr        #
+#    Updated: 2022/09/14 19:16:20 by tbeaudoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
 NAME = push_swap
 
-SRC = src/push_swap.c
+SRC = src/push_swap.c src/error.c src/utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -32,7 +32,7 @@ all: push_swap
 push_swap: $(SRC) $(OBJ)
 		$(MAKE) -C $(PRINTF_PATH)
 		$(MAKE) -C $(LIBFT_PATH)
-		$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(PRINTF)
+		$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(PRINTF) $(LIBFT)
 
 clean:
 		$(RM) $(OBJ)
