@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/20 19:29:20 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:33:42 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	check_error(int args, char **array, int j, t_stack *stack)
 		|| check_min_max(args, array, j, stack) == false)
 	{
 		write (1, "Error\n", 6);
+		free(stack->stack_a);
 		exit (0);
 	}
 }
