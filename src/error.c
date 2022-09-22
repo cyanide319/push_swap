@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/21 22:04:17 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:57:46 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 t_bool	check_sorted(t_stack *stack)
 {
-	(void)stack;
-	// int	i;
-	// int	j;
+	int	i;
+	int	j;
 
-	// i = 0;
-	// j = 1;
-	// while (i < stack->stack_size)
-	// {
-	// 	if (stack->stack_a[i] < stack->stack_a[j])
-	// 	{
-	// 		i++;
-	// 		j++;
-	// 	}
-	// 	if (stack->stack_a[i] == stack->stack_size)
-	// 		return (false);
-	// }
+	i = 0;
+	j = 1;
+	while (j <= stack->stack_size + 1)
+	{
+		if (stack->stack_a[i] > stack->stack_a[j])
+			break ;
+		if (stack->stack_a[i] < stack->stack_a[j])
+		{
+			i++;
+			if (i == stack->stack_size)
+				clean_quit(stack);
+			j++;
+		}
+	}
 	return (true);
 }
 
@@ -69,7 +70,7 @@ t_bool	check_min_max(char **array, int j, t_stack *stack)
 	return (true);
 }
 
-t_bool	check_alpha(char **array, int j, t_stack *stack)
+t_bool	check_digit(char **array, int j, t_stack *stack)
 {
 	int	i;
 	int	max;
@@ -93,7 +94,7 @@ t_bool	check_alpha(char **array, int j, t_stack *stack)
 
 void	check_error(char **array, int j, t_stack *stack)
 {
-	if (check_alpha(array, j, stack) == false
+	if (check_digit(array, j, stack) == false
 		|| check_min_max(array, j, stack) == false
 		|| check_sorted(stack) == false)
 	{
