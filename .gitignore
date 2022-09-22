@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+push_swap
 
 # Debug files
 *.dSYM/
@@ -52,4 +53,3 @@ Mkfile.old
 dkms.conf
 .DS_Store
 *.json
-push_swap

@@ -6,65 +6,83 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/20 19:33:42 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:04:17 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_bool	check_duplicate(t_stack	*stack, int j)
+t_bool	check_sorted(t_stack *stack)
 {
-	int	i;
+	(void)stack;
+	// int	i;
+	// int	j;
 
-	while (stack->stack_a[j - 1])
+	// i = 0;
+	// j = 1;
+	// while (i < stack->stack_size)
+	// {
+	// 	if (stack->stack_a[i] < stack->stack_a[j])
+	// 	{
+	// 		i++;
+	// 		j++;
+	// 	}
+	// 	if (stack->stack_a[i] == stack->stack_size)
+	// 		return (false);
+	// }
+	return (true);
+}
+
+t_bool	check_duplicate(t_stack	*stack, int i)
+{
+	int	j;
+
+	j = i - 1;
+	while (stack->stack_a[j])
 	{
-		i = j - 1;
-		while (stack->stack_a[i - 1])
-		{
-			if (stack->stack_a[i] == stack->stack_a[j])
-				return (false);
-			i--;
-		}
+		if (stack->stack_a[i] == stack->stack_a[j])
+			return (false);
 		j--;
 	}
 	return (true);
 }
 
-t_bool	check_min_max(int args, char **array, int j, t_stack *stack)
+t_bool	check_min_max(char **array, int j, t_stack *stack)
 {
 	long	n;
 	int		i;
+	int		max;
 
-	i = j;
-	stack->stack_a = malloc(sizeof(int) * args);
-	if (!stack->stack_a)
-		exit(0);
-	while (j < args)
+	i = 0;
+	max = j;
+	while (j <= stack->stack_size + max)
 	{
 		n = ft_atol(array[j]);
 		if (n < INT_MIN || n > INT_MAX)
 			return (false);
 		j++;
 		stack->stack_a[i] = (int)n;
-		i++;
-		if (check_duplicate(stack, j) == false)
+		if (i >= 1 && check_duplicate(stack, i) == false)
 			return (false);
+		i++;
 	}
 	return (true);
 }
 
-t_bool	check_alpha(int args, char **array, int j)
+t_bool	check_alpha(char **array, int j, t_stack *stack)
 {
 	int	i;
+	int	max;
 
-	i = 0;
-	while (j < args)
+	max = j;
+	while (j <= stack->stack_size + max)
 	{
+		i = 0;
+		if (array[j][i] == '-')
+			i++;
 		while (array[j][i])
 		{
-			if (array[j][i] == '-')
-				i++;
-			if (array[j][i] < 48 || array[j][i] > 57)
+			if (array[j][i] < '0' || array[j][i] > '9')
 				return (false);
 			i++;
 		}
@@ -73,13 +91,13 @@ t_bool	check_alpha(int args, char **array, int j)
 	return (true);
 }
 
-void	check_error(int args, char **array, int j, t_stack *stack)
+void	check_error(char **array, int j, t_stack *stack)
 {
-	if (check_alpha(args, array, j) == false
-		|| check_min_max(args, array, j, stack) == false)
+	if (check_alpha(array, j, stack) == false
+		|| check_min_max(array, j, stack) == false
+		|| check_sorted(stack) == false)
 	{
 		write (1, "Error\n", 6);
-		free(stack->stack_a);
-		exit (0);
+		clean_quit(stack);
 	}
 }

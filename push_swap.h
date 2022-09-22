@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:36:52 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/20 18:57:53 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:52:20 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 # include <limits.h>
 
 typedef struct s_stack{
-	int	*stack_a;
-	int	*stack_b;
-	int	stack_size;
+	int			*stack_a;
+	int			*stack_b;
+	int			stack_size;
+	char		**temp;
 }t_stack;
 
 typedef enum e_bool{
@@ -31,7 +32,8 @@ typedef enum e_bool{
 }t_bool;
 
 long	ft_atol(const char *str);
-void	check_error(int argc, char **argv, int index, t_stack *stack);
-void	double_free(char	**str);
+void	check_error(char **argv, int index, t_stack *stack);
+void	double_free(char	***tabp);
+void	clean_quit(t_stack *stack);
 
 #endif
