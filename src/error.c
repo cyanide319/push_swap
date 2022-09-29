@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/22 15:57:46 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:29:50 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ t_bool	check_sorted(t_stack *stack)
 
 	i = 0;
 	j = 1;
-	while (j <= stack->stack_size + 1)
+	while (j <= stack->size + 1)
 	{
-		if (stack->stack_a[i] > stack->stack_a[j])
+		if (stack->input[i] > stack->input[j])
 			break ;
-		if (stack->stack_a[i] < stack->stack_a[j])
+		if (stack->input[i] < stack->input[j])
 		{
 			i++;
-			if (i == stack->stack_size)
+			if (i == stack->size)
 				clean_quit(stack);
 			j++;
 		}
@@ -39,9 +39,9 @@ t_bool	check_duplicate(t_stack	*stack, int i)
 	int	j;
 
 	j = i - 1;
-	while (stack->stack_a[j])
+	while (stack->input[j])
 	{
-		if (stack->stack_a[i] == stack->stack_a[j])
+		if (stack->input[i] == stack->input[j])
 			return (false);
 		j--;
 	}
@@ -56,13 +56,13 @@ t_bool	check_min_max(char **array, int j, t_stack *stack)
 
 	i = 0;
 	max = j;
-	while (j <= stack->stack_size + max)
+	while (j <= stack->size + max)
 	{
 		n = ft_atol(array[j]);
 		if (n < INT_MIN || n > INT_MAX)
 			return (false);
 		j++;
-		stack->stack_a[i] = (int)n;
+		stack->input[i] = (int)n;
 		if (i >= 1 && check_duplicate(stack, i) == false)
 			return (false);
 		i++;
@@ -76,7 +76,7 @@ t_bool	check_digit(char **array, int j, t_stack *stack)
 	int	max;
 
 	max = j;
-	while (j <= stack->stack_size + max)
+	while (j <= stack->size + max)
 	{
 		i = 0;
 		if (array[j][i] == '-')

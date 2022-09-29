@@ -6,7 +6,7 @@
 #    By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 16:06:16 by tbeaudoi          #+#    #+#              #
-#    Updated: 2022/09/14 19:16:20 by tbeaudoi         ###   ########.fr        #
+#    Updated: 2022/09/28 16:29:41 by tbeaudoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM = rm -f
 
 NAME = push_swap
 
-SRC = src/push_swap.c src/error.c src/utils.c
+SRC = src/*.c
 
 OBJ = $(SRC:.c=.o)
 
