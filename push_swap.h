@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:36:52 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/28 18:30:03 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:58:44 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_stack{
 	int			*a;
 	int			*b;
 	int			size;
+	int			size_a;
+	int			size_b;
 	char		**temp;
 }t_stack;
 
@@ -48,5 +50,22 @@ void	clean_quit(t_stack *stack);
 void	init_stacks(t_stack *stack);
 void	dispatch(int argc, char **argv, t_stack *stack);
 int		index_stack(t_stack *stack, int n);
+
+//moves stack a
+void	pb(t_stack *stack);
+void	sa(t_stack *stack);
+void	ra(t_stack *stack);
+void	rra(t_stack *stack);
+
+//moves stack b
+void	pa(t_stack *stack);
+void	sb(t_stack *stack);
+void	rb(t_stack *stack);
+void	rrb(t_stack *stack);
+
+//moves multi
+void	ss(t_stack *stack);
+void	rr(t_stack *stack);
+void	rrr(t_stack *stack);
 
 #endif

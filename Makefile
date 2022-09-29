@@ -6,7 +6,7 @@
 #    By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 16:06:16 by tbeaudoi          #+#    #+#              #
-#    Updated: 2022/09/28 16:29:41 by tbeaudoi         ###   ########.fr        #
+#    Updated: 2022/09/29 18:59:03 by tbeaudoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,13 @@ RM = rm -f
 
 NAME = push_swap
 
-SRC = src/*.c
+SRC = src/push_swap.c \
+	src/error.c \
+	src/moves_a.c \
+	src/moves_b.c \
+	src/moves_multi.c \
+	src/stacks_init.c \
+	src/utils.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -27,12 +33,12 @@ LIBFT = include/libft/libft.a
 LIBFT_PATH = include/libft/
 
 				
-all: push_swap
+all: $(NAME)
 
-push_swap: $(SRC) $(OBJ)
+$(NAME): $(OBJ)
 		$(MAKE) -C $(PRINTF_PATH)
 		$(MAKE) -C $(LIBFT_PATH)
-		$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(PRINTF) $(LIBFT)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF) $(LIBFT)
 
 clean:
 		$(RM) $(OBJ)

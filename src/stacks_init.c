@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:16:17 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 15:23:30 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:43:22 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	init_stacks(t_stack *stack)
 	int	i;
 	int	j;
 	int	n;
-	int	fuck;
 
 	i = 0;
 	j = stack->size;
 	if (!stack)
 		clean_quit(stack);
 	stack->b = malloc(sizeof(int) * stack->size + 1);
+	stack->size_a = stack->size + 1;
+	stack->size_b = 0;
 	if (!stack->b)
 		clean_quit(stack);
 	while (j >= 0)
@@ -32,11 +33,6 @@ void	init_stacks(t_stack *stack)
 		stack->a[i] = index_stack(stack, n);
 		i++;
 		j--;
-	}
-	fuck = -1;
-	while (fuck < stack->size)
-	{
-		ft_printf("%d\n", stack->a[++fuck]);
 	}
 }
 
