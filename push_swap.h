@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:36:52 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 18:58:44 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:43:08 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_bool	check_min_max(char **array, int j, t_stack *stack);
 t_bool	check_digit(char **array, int j, t_stack *stack);
 void	check_error(char **argv, int index, t_stack *stack);
 void	clean_quit(t_stack *stack);
+void	check_sorted_stack_a(t_stack *stack);
 
 //stacks
 void	init_stacks(t_stack *stack);
@@ -67,5 +68,9 @@ void	rrb(t_stack *stack);
 void	ss(t_stack *stack);
 void	rr(t_stack *stack);
 void	rrr(t_stack *stack);
+
+//algorithm
+void	algo_dispatch(t_stack *stack);
+void	algo_3(t_stack *stack);
 
 #endif

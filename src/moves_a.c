@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:27:35 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 17:55:16 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:13:01 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sa(t_stack *stack)
 	}
 }
 
-void	rra(t_stack *stack)
+void	ra(t_stack *stack)
 {
 	int	temp;
 	int	j;
@@ -55,10 +55,10 @@ void	rra(t_stack *stack)
 		j--;
 	}
 	stack->a[0] = temp;
-	write (1, "rra\n", 3);
+	write (1, "ra\n", 3);
 }
 
-void	ra(t_stack *stack)
+void	rra(t_stack *stack)
 {
 	int	temp;
 	int	j;
@@ -74,5 +74,5 @@ void	ra(t_stack *stack)
 		j++;
 	}
 	stack->a[stack->size_a - 1] = temp;
-	write (1, "ra\n", 4);
+	write (1, "rra\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/28 20:29:50 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:30:27 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ t_bool	check_sorted(t_stack *stack)
 		{
 			i++;
 			if (i == stack->size)
+			{
+				write (1, "Sorted\n", 7);
 				clean_quit(stack);
+			}
 			j++;
 		}
 	}
@@ -98,7 +101,7 @@ void	check_error(char **array, int j, t_stack *stack)
 		|| check_min_max(array, j, stack) == false
 		|| check_sorted(stack) == false)
 	{
-		write (1, "Error\n", 6);
+		write (2, "Error\n", 6);
 		clean_quit(stack);
 	}
 }
