@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 19:30:27 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:24:42 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_bool	check_sorted(t_stack *stack)
 
 	i = 0;
 	j = 1;
-	while (j <= stack->size + 1)
+	while (i < stack->size + 1)
 	{
 		if (stack->input[i] > stack->input[j])
 			break ;

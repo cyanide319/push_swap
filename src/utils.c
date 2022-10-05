@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:16:38 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 20:43:21 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:16:26 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,20 @@ void	check_sorted_stack_a(t_stack *stack)
 
 	i = 0;
 	j = 1;
-	while (j <= stack->size_a)
+	while (i < stack->size_a)
 	{
 		if (stack->a[i] < stack->a[j])
 		{
 			write (1, "Not sorted\n", 11);
-			clean_quit(stack);
+			break ;
 		}
 		if (stack->a[i] > stack->a[j])
 		{
 			i++;
-			if (i == stack->size_a)
+			if (i == stack->size_a - 1)
 			{
 				write (1, "Sorted\n", 7);
-				clean_quit(stack);
+				break ;
 			}
 			j++;
 		}

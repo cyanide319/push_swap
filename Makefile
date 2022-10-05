@@ -6,7 +6,7 @@
 #    By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 16:06:16 by tbeaudoi          #+#    #+#              #
-#    Updated: 2022/09/29 19:45:21 by tbeaudoi         ###   ########.fr        #
+#    Updated: 2022/10/03 16:42:26 by tbeaudoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = src/push_swap.c \
 	src/stacks_init.c \
 	src/utils.c \
 	src/small_algo.c \
+	src/big_algo.c \
 
 OBJ = $(SRC:.c=.o)
 

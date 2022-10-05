@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:36:52 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 20:43:08 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:28:04 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_stack{
 	int			size;
 	int			size_a;
 	int			size_b;
+	int			nb_ops;
+	int			base;
 	char		**temp;
 }t_stack;
 
@@ -72,5 +74,12 @@ void	rrr(t_stack *stack);
 //algorithm
 void	algo_dispatch(t_stack *stack);
 void	algo_3(t_stack *stack);
+void	algo_5(t_stack *stack);
+void	big_algo(t_stack *stack);
+
+void	big_algo_2(t_stack *stack, int x, int y);
+void	push_back(t_stack *stack);
+void	push_back_again(t_stack *stack);
+int		best_path(t_stack *stack, int nb);
 
 #endif

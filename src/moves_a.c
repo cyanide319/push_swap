@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:27:35 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/09/29 20:13:01 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:22:20 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	pb(t_stack *stack)
 	stack->b[stack->size_b] = temp;
 	stack->size_a--;
 	stack->size_b++;
+	stack->nb_ops++;
 	write (1, "pb\n", 3);
 }
 
@@ -35,6 +36,7 @@ void	sa(t_stack *stack)
 		temp = stack->a[stack->size_a - 1];
 		stack->a[stack->size_a - 1] = stack->a[stack->size_a - 2];
 		stack->a[stack->size_a - 2] = temp;
+		stack->nb_ops++;
 		write (1, "sa\n", 3);
 	}
 }
@@ -55,6 +57,7 @@ void	ra(t_stack *stack)
 		j--;
 	}
 	stack->a[0] = temp;
+	stack->nb_ops++;
 	write (1, "ra\n", 3);
 }
 
@@ -74,5 +77,6 @@ void	rra(t_stack *stack)
 		j++;
 	}
 	stack->a[stack->size_a - 1] = temp;
+	stack->nb_ops++;
 	write (1, "rra\n", 4);
 }
