@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:16:38 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/03 15:16:26 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:41:37 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	check_sorted_stack_a(t_stack *stack)
 			j++;
 		}
 	}
+	ft_printf("ops: %d\n", stack->nb_ops);
 }

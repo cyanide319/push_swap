@@ -6,83 +6,11 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:41:18 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/05 17:35:29 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:04:17 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// void	big_algo(t_stack *stack)
-// {
-// 	while (stack->size_b < (stack->size / 3))
-// 	{
-// 		if (stack->a[stack->size_a - 1] < (stack->size / 3))
-// 			pb(stack);
-// 		else
-// 			ra(stack);
-// 	}
-// 	while (stack->size_b < (stack ))
-// }
-
-void	big_algo(t_stack *stack)
-{
-	int	x;
-	int	i;
-	int	y;
-
-	x = 4;
-	while (x >= 0)
-	{
-		y = 9 - x;
-		i = stack->size_a;
-		while (i--)
-		{
-			big_algo_2(stack, x, y);
-		}
-		x--;
-	}
-}
-
-void	big_algo_2(t_stack *stack, int x, int y)
-{
-	if (stack->a[stack->size_a - 1] == 100)
-		ra(stack);
-	else if (stack->a[stack->size_a - 1] % 10 == x
-		|| stack->a[stack->size_a - 1] % 10 == y)
-	{
-		if (stack->a[stack->size_a - 1] % 10 == x)
-		{
-			pb(stack);
-			rb(stack);
-		}
-		else if (stack->a[stack->size_a - 1] % 10 == y)
-			pb(stack);
-	}
-	else
-		ra(stack);
-}
-
-void	push_back(t_stack *stack)
-{
-	int	x;
-	int	i;
-
-	x = stack->size / 10;
-	while (x >= 0)
-	{
-		i = stack->size_b;
-		while (i--)
-		{
-			if (stack->b[stack->size_b - 1] / 10 == x)
-				pa(stack);
-			else
-			{
-				rb(stack);
-			}
-		}
-		x--;
-	}
-}
 
 int	best_path(t_stack *stack, int nb)
 {
@@ -103,4 +31,91 @@ int	best_path(t_stack *stack, int nb)
 		return (j);
 	else
 		return (i);
+}
+
+int	next_in_b(t_stack *stack)
+{
+	int	nb;
+	int	count;
+
+	nb = 0;
+	count = 0;
+	while (count < stack->size_b)
+	{
+		if (stack->b[count] > nb)
+			nb = stack->b[count];
+		count++;
+	}
+	return (nb);
+}
+
+int	number_is_in_range(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (count < stack->size_a)
+	{
+		if (stack->a[count] < (stack->size / 2 + stack->ch)
+			&& stack->a[count] > (stack->size / 2 - stack->ch))
+			return (1);
+		count++;
+	}
+	return (0);
+}
+
+void	b_to_a(t_stack *stack)
+{
+	int	next;
+	int	count;
+
+	while (stack->size_b)
+	{
+		next = next_in_b(stack);
+		if (stack->b[stack->size_b - 1] == next
+			|| stack->b[stack->size_b - 1] == next - 1)
+		{
+			pa(stack);
+			if (stack->a[stack->size_a - 1] > stack->a[stack->size_a - 2])
+				sa(stack);
+		}
+		else
+		{
+			count = best_path(stack, next);
+			while (stack->b[stack->size_b - 1] != next)
+			{
+				if (count > stack->size_b / 2)
+					rb(stack);
+				else
+					rrb(stack);
+			}
+		}
+	}
+}
+
+void	a_to_b(t_stack *stack)
+{
+	int	med;
+	int	still_nb_in_chunk;
+
+	med = stack->size_a / 2;
+	stack->ch = stack->chunk;
+	while (stack->size_a)
+	{
+		still_nb_in_chunk = number_is_in_range(stack);
+		if (still_nb_in_chunk)
+		{
+			if (stack->a[stack->size_a - 1] >= med - stack->ch
+				&& stack->a[stack->size_a - 1] <= med + stack->ch)
+			{
+				pb(stack);
+				if (stack->b[stack->size_b - 1] < med)
+					rb(stack);
+			}
+			else
+				ra(stack);
+		}
+		else
+			stack->ch += stack->chunk;
+	}
 }

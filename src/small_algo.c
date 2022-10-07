@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:31:51 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/05 17:28:55 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:41:48 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,12 @@ void	algo_dispatch(t_stack *stack)
 		sa(stack);
 	if (stack->size_a == 3)
 		algo_3(stack);
-	if (stack->size_a == 5)
+	if (stack->size_a == 5 || stack->size_a == 4)
 		algo_5(stack);
-	if (stack->size_a >= 100)
+	else
 	{
-		big_algo(stack);
-		push_back(stack);
-		ft_printf("ops: %d\n", stack->nb_ops);
-		check_sorted_stack_a(stack);
-		clean_quit(stack);
-	}
-	if (stack->size_a == 500)
-	{
-		big_algo(stack);
-		push_back(stack);
-		// push_back_again(stack);
-		// while (stack->size_b > 0)
-		// 	pa(stack);
-		ft_printf("ops: %d\n", stack->nb_ops);
-		check_sorted_stack_a(stack);
-		clean_quit(stack);
+		a_to_b(stack);
+		b_to_a(stack);
 	}
 }
 
@@ -65,8 +51,6 @@ void	algo_3(t_stack *stack)
 		ra(stack);
 		sa(stack);
 	}
-	ft_printf("ops: %d\n", stack->nb_ops);
-	check_sorted_stack_a(stack);
 }
 
 void	algo_5(t_stack	*stack)
@@ -88,8 +72,6 @@ void	algo_5(t_stack	*stack)
 	pa(stack);
 	ra(stack);
 	pa(stack);
-	ra(stack);
-	ft_printf("ops: %d\n", stack->nb_ops);
-	check_sorted_stack_a(stack);
-	clean_quit(stack);
+	if (stack->size_a == 5)
+		ra(stack);
 }

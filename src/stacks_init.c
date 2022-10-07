@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:16:17 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/03 15:21:16 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:08:29 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	init_stacks(t_stack *stack)
 	i = 0;
 	j = stack->size;
 	if (!stack)
-		clean_quit(stack);
-	stack->b = ft_calloc(sizeof(int), stack->size + 1);
-	if (!stack->b)
 		clean_quit(stack);
 	stack->size_a = stack->size + 1;
 	stack->size_b = 0;
@@ -58,16 +55,15 @@ int	index_stack(t_stack *stack, int n)
 void	dispatch(int argc, char **argv, t_stack *stack)
 {
 	if (argc == 1)
-	{
 		exit (0);
-	}
 	if (argc == 2)
 	{
 		stack->size = ft_count(argv[1], ' ') - 1;
 		stack->temp = ft_split(argv[1], ' ');
 		stack->input = malloc(sizeof(int) * stack->size + 1);
-		stack->a = ft_calloc(sizeof(int), stack->size + 1);
-		if (!stack->input || !stack->a)
+		stack->a = malloc(sizeof(int) * stack->size + 1);
+		stack->b = malloc(sizeof(int) * stack->size + 1);
+		if (!stack->input || !stack->a || !stack->b)
 			clean_quit(stack);
 		check_error(stack->temp, 0, stack);
 	}
@@ -75,8 +71,9 @@ void	dispatch(int argc, char **argv, t_stack *stack)
 	{
 		stack->size = argc - 2;
 		stack->input = malloc(sizeof(int) * stack->size + 1);
-		stack->a = ft_calloc(sizeof(int), stack->size + 1);
-		if (!stack->input || !stack->a)
+		stack->a = malloc(sizeof(int) * stack->size + 1);
+		stack->b = malloc(sizeof(int) * stack->size + 1);
+		if (!stack->input || !stack->a || !stack->b)
 			clean_quit(stack);
 		check_error(argv, 1, stack);
 	}
