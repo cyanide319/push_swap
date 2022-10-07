@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:31:51 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/05 20:41:48 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:54:42 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	algo_dispatch(t_stack *stack)
 		algo_3(stack);
 	if (stack->size_a == 5 || stack->size_a == 4)
 		algo_5(stack);
-	else
+	if (stack->size_a > 5)
 	{
 		a_to_b(stack);
 		b_to_a(stack);

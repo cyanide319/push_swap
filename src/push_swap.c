@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:35:43 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/05 20:02:08 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:58:33 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
+	ft_bzero(&stack, sizeof(stack));
 	dispatch(argc, argv, &stack);
 	init_stacks(&stack);
 	stack.chunk = 15;

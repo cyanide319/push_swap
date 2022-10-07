@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:16:17 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/07 13:08:29 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:28:05 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	dispatch(int argc, char **argv, t_stack *stack)
 	{
 		stack->size = ft_count(argv[1], ' ') - 1;
 		stack->temp = ft_split(argv[1], ' ');
-		stack->input = malloc(sizeof(int) * stack->size + 1);
-		stack->a = malloc(sizeof(int) * stack->size + 1);
-		stack->b = malloc(sizeof(int) * stack->size + 1);
+		stack->input = malloc(sizeof(int) * (stack->size + 1));
+		stack->a = malloc(sizeof(int) * (stack->size + 1));
+		stack->b = malloc(sizeof(int) * (stack->size + 1));
 		if (!stack->input || !stack->a || !stack->b)
 			clean_quit(stack);
 		check_error(stack->temp, 0, stack);
@@ -70,9 +70,9 @@ void	dispatch(int argc, char **argv, t_stack *stack)
 	else
 	{
 		stack->size = argc - 2;
-		stack->input = malloc(sizeof(int) * stack->size + 1);
-		stack->a = malloc(sizeof(int) * stack->size + 1);
-		stack->b = malloc(sizeof(int) * stack->size + 1);
+		stack->input = malloc(sizeof(int) * (stack->size + 1));
+		stack->a = malloc(sizeof(int) * (stack->size + 1));
+		stack->b = malloc(sizeof(int) * (stack->size + 1));
 		if (!stack->input || !stack->a || !stack->b)
 			clean_quit(stack);
 		check_error(argv, 1, stack);

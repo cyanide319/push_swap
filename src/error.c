@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:43:27 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/05 22:07:56 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:52:27 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_bool	check_sorted(t_stack *stack)
 			i++;
 			if (i == stack->size)
 			{
-				write (1, "Sorted\n", 7);
+				write (2, "Error\n", 6);
 				clean_quit(stack);
 			}
 			j++;
@@ -42,7 +42,7 @@ t_bool	check_duplicate(t_stack	*stack, int i)
 	int	j;
 
 	j = i - 1;
-	while (stack->input[j])
+	while (j >= 0)
 	{
 		if (stack->input[i] == stack->input[j])
 			return (false);
@@ -104,4 +104,5 @@ void	check_error(char **array, int j, t_stack *stack)
 		write (2, "Error\n", 6);
 		clean_quit(stack);
 	}
+
 }
