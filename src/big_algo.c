@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:41:18 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/10/05 20:04:17 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:02:05 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	best_path(t_stack *stack, int nb)
 {
-	int	i;
-	int	j;
+	int	bot;
+	int	top;
 
-	i = 0;
-	j = stack->size_b - 1;
-	while (stack->b[i] != nb)
+	bot = 0;
+	top = stack->size_b - 1;
+	while (stack->b[bot] != nb)
 	{
-		i++;
+		bot++;
 	}
-	while (stack->b[j] != nb)
+	while (stack->b[top] != nb)
 	{
-		j--;
+		top--;
 	}
-	if (stack->size_b - j < i)
-		return (j);
+	if (stack->size_b - top < bot)
+		return (top);
 	else
-		return (i);
+		return (bot);
 }
 
 int	next_in_b(t_stack *stack)
@@ -96,14 +96,14 @@ void	b_to_a(t_stack *stack)
 void	a_to_b(t_stack *stack)
 {
 	int	med;
-	int	still_nb_in_chunk;
+	int	still_in_chunk;
 
 	med = stack->size_a / 2;
 	stack->ch = stack->chunk;
 	while (stack->size_a)
 	{
-		still_nb_in_chunk = number_is_in_range(stack);
-		if (still_nb_in_chunk)
+		still_in_chunk = number_is_in_range(stack);
+		if (still_in_chunk)
 		{
 			if (stack->a[stack->size_a - 1] >= med - stack->ch
 				&& stack->a[stack->size_a - 1] <= med + stack->ch)
